@@ -32,6 +32,8 @@ EPL_19<-read_excel("2019 Top 10.xlsx")
 EPL_20<-read_excel("2020 Top 10.xlsx")
 EPL_20$GD <- c(EPL_20$Goals-EPL_20$GC)
 
+Home_Away <- read_excel("Home_Away.xlsx")
+
 head(EPL_18)
 head(EPL_19)
 head(EPL_20)
@@ -125,15 +127,26 @@ Predict_Game <- function(Home, Away){
   probT <- 0
   for (x in (0:10))
     for (y in (0:10))
-      P <- ppois(x, Lambdas[1]) * ppois(y, Lambdas[2])
-      if (x==y){probT = probT + p}
-      else if (x > y){probH = probH + p}
-      else {probA = probA + p}
+      Lambdas <- Calculate_lambda(Home, Away)
+      Lambda1 <- Lambdas[1]
+      Lambda2 <- Lambdas[2]
+      P <- dpois(x, Lambda1) * dpois(y, Lambda2)
+      print(PA <- c(28, 94, 37, 83, 15))
+      if (x==y){probT = probT + P}
+      else if (x > y){probH = probH + P}
+      else {probA = probA + P}
   scoreH<- 3 * probH + probT
   scoreA <- 3 * probA + probT  
   return( c(scoreH, scoreA))
 }
+
 Predict_Game
+Home <- Home_Away$Home
+Away <- Home_Away$Away
+
+Score <- Predict_Game(Home[1], Away[1]) 
+print(Score)
+
 ```
 
 ## Summarized Results

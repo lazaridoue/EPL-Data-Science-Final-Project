@@ -135,17 +135,25 @@ Away_Scored <- c(1.86,2.33, 2.00,2.07,1.07, 1.43,1.00, 1.33, 1.08, 1.00)
 #Away Conceded Average number of goals conceded in away matches
 Away_Conceded <- c(0.64, 1.27, 0.93,1.71,1.29, 1.21, 0.92,1.67,1.23, 1.50)
 ```
+The histogram shows a distribution of how often goals are scored by the home teams in the English Premier League. __Scenario to explain histogram:__ If Berea College soccer team played against Barnard College soccer at the Berea College stadium, the histogram demonstrates that Berea College soccer team is more likely to score more goals at home (College stadium).
+
 ```{r Histogram1}
 hist(Home_Scored)
 ```
+
+The histogram shows that the distribution of the goals scored away is roughly symmetrical and bimodal. The goals scored away are relatively spread out. The EPL teams playing away from how are less likely to score goals. __Scenario:__ If Berea College soccer team plays at the Barnard College soccer stadium, they are less likely to score.
 
 ```{r Histogram2}
 hist(Away_Scored)
 ```
 
+The histogram shows the goals that the away team scored at the home team stadium in the EPL. The distribution shows that the away team is more likely not to score. __Scenario:__ If Barnard College soccer is playing at the Berea College stadium, they are less likely to score at the Berea College stadium.
+
 ```{r Histogram3}
 hist(Home_Conceded)
 ```
+
+The histogram shows a distribution that is symmetrical. The distribution shows the likelihood of away teams to score at the home team stadium. __Scenario:__ If  Berea College was playing at the Barnard College stadium, they are relatively less likely to score at the Barnard College stadium. 
 
 ```{r Histogram4}
 hist(Away_Conceded)

@@ -15,12 +15,13 @@ output:
 
 # Introduction
 
-<p> The _English Premier League_ is the top league of England's football, with **20 teams** fighting to be crowned the English champions. Premier League was founded in 1992, and it became widely known around the world due to its strong financial support and global broadcasting. One season in The _English Premier League_ begins in August and ends at the end of May. Each team plays with each other on home and away games. For each game, each team gets awarded 3 points for a win, 1 point for a draw, and no points for a defeat. Manchester United has won the title 13 times, Chelsea has won it 5 times, and Manchester City has won it 4 times so far. The top 4 teams of the season are promoted to compete in the Champions League. The next 3 are competing for the participation in the Europa League competition, and the last 3 teams are moved to relegation. </p>
+<p> The _English Premier League_ is the top league of England's football, with **20 teams** fighting to be crowned the English champions. Premier League was founded in 1992, and it became widely known around the world due to its strong financial support and global broadcasting (Premier League, 2020). One season in The _English Premier League_ begins in August and ends at the end of May. Each team plays with each other on home and away games. For each game, each team gets awarded 3 points for a win, 1 point for a draw, and no points for a defeat. Manchester United has won the title 13 times, Chelsea has won it 5 times, and Manchester City has won it 4 times so far. The top 4 teams of the season are promoted to compete in the Champions League (Premier League, 2020). The next 3 are competing for the participation in the Europa League competition, and the last 3 teams are moved to relegation. </p>
 </p> In our data science project, we will analyze data from the last 2 seasons, one of which has not been completed yet. The 2 seasons are 2018-2019 and 2019-2020 season. Our idea is to work on predicting the standings of the clubs at the end of the season 2019-2020 for the _English Premier League_. Some of the research ideas we are going to include are, which team is most likely to win the current season of the _Premier League_, and which are most likely to be the top 5 teams in the standing. In addition to that, we are going to closely study whether scoring the most goals get titles for the team and if there exists a home advantage for the games played on the home field. </p>
 <p> Our team chose to work on a topic about The English Premier League because football is a sport that we have invested personal interest in, as we enjoyed playing and watching football. Additionally, due to COVID-19, like other activities, the _English Premier League_ 2019-2020 season has been put on hold which has left football fans suspenseful. As enthusiastic football fans, we would like to use the knowledge that we have acquired in the data science class to predict outcomes that would have happened in the 2019-2020 season of _The English Premier League_ if there had not been a global pandemic of the COVID-19. </p> 
 
 # Data 
-<p> This is where we imported the data. We imported 5 files. 4 of these files were datasets which helped us decide the outcome of the 2020 season. We had data from the 2018, 2019, 2020 premier league season. We also had a datset for games left for the top 10 teams in 2020.For these datasets we had to clean the data. We had datasets from these seasons that had missing information and some very important information for predicting the winner of the 2020 season. We had to delete the uneccesary columns and keep the important data. We had missing information that was very key for finding our final answers such as goal differentials, total points, and chances missed and much more. We found the inforamtion needed and made a new spreadsheet and filled in the data to meet our needs and this was how we cleaned the data to get what we needed.</p>
+<p> This is where we imported the data. We imported 5 files. 4 of these files were datasets which helped us decide the outcome of the 2020 season. We had data from the 2018, 2019, 2020 premier league season. We also had a dataset for games left for the top 10 teams in 2020. For these datasets we had to clean the data. We had datasets from these seasons that had missing information and some very important information for predicting the winner of the 2020 season. We had to delete the uneccesary columns and keep the important data. We had missing information that was very key for finding our final answers such as goal differentials, total points, and chances missed and much more. We found the information needed and made a new spreadsheet and filled in the data to meet our needs and this was how we cleaned the data to get what we needed.</p>
+
 ```{r imports}
 # Add needed libraries, import all needed data, and show glimspses of all data here
 library(tidyverse)
@@ -77,7 +78,13 @@ glimpse(EPL_20, width = 3)
 
 # Primary Write-up
 
-We are mainly using the teams past data in order to predict the team’s performance. We used the datasets available from https://www.kaggle.com/thesiff/premierleague1819 and https://www.kaggle.com/idoyo92/epl-stats-20192020, which consists of all the results from 2018-2020, compiled into CSV files. The next step was to discover the dominating factors that interact well with team strength.
+We are mainly using the teams past data in order to predict the team’s performance. We used the datasets available for seasons 2017-2018, 2018-2019, and 2019-2020 compiled into CSV files. 
+
+* For season 2017-2018 we got the data from Kaggle.com (Nalla, 2018).
+* For season 2018-2019 we got the data from Premier League website (JohnDoe, 2019).
+* For season 2019-2020 we got the data from Kaggle.com (Ido, 2020).
+
+The next step is for us to discover what factors show that a team is going to win the title.
 
 ## Key Outcomes
 ## Summary statistics and visualizations
@@ -119,13 +126,28 @@ ggplot(data=EPL_20, aes(x=PTS, y= Goals))+
   geom_smooth(method = "lm", se = FALSE)
 
 ```
+
 ## Here we have the prediction model, for the final standing of the English Premier League season 2019-2020.
 
-<p> First we assigned the values of the average goals scored for each of the team at their Home and on an Away field. Similarly we worked on how many goals were conceded by each team either Home or Away </p>
+<p> First, we assigned the values of the average goals scored for each of the team at their Home and on an Away field. Then, we worked on how many goals were conceded by each team either Home or Away. </p>
+The current standing of the teams goes as following, and we are going to number the teams as their current place (Apaar, 2019). The data collected are from two websites, premierleague.com and footystats.org (FootyStats, 2020) & (Premier League, 2020). 
+
+1. Liverpool
+2. Manchester City
+3. Leicester City
+4. Chelsea
+5. Manchester United
+6. Wolverhampton
+7. Sheffield United
+8. Tottenham
+9. Arsenal
+10. Burnley
+
 
 ```{r Prediction Model}
 # Add these sections as needed, giving them unique names
 #The order goes as follow Liverpool (1), Man City (2), Leicester City (3), Chelsea (4), Man U(5), Wolves (6), Sheffield (7), Tottenham (8), Arsenal (9), Burnley (10).
+
 #Home Score Average number of goals scored in home matches
 Home_Scored <- c(2.67, 2.54, 2.00, 1.47,1.93, 1.40, 1.13,1.93,1.73, 1.33)
 #Home Conceded Average number of goals conceded in home matches
@@ -135,34 +157,38 @@ Away_Scored <- c(1.86,2.33, 2.00,2.07,1.07, 1.43,1.00, 1.33, 1.08, 1.00)
 #Away Conceded Average number of goals conceded in away matches
 Away_Conceded <- c(0.64, 1.27, 0.93,1.71,1.29, 1.21, 0.92,1.67,1.23, 1.50)
 ```
-The histogram shows a distribution of how often goals are scored by the home teams in the English Premier League. __Scenario to explain histogram:__ If Berea College soccer team played against Barnard College soccer at the Berea College stadium, the histogram demonstrates that Berea College soccer team is more likely to score more goals at home (College stadium).
+
+<p> The histogram shows a distribution of how often goals are scored by the home teams in the English Premier League. **Scenario to explain histogram:** If Berea College soccer team played against Barnard College soccer at the Berea College stadium, the histogram demonstrates that Berea College soccer team is more likely to score more goals at home (College stadium). </p>
 
 ```{r Histogram1}
 hist(Home_Scored)
 ```
 
-The histogram shows that the distribution of the goals scored away is roughly symmetrical and bimodal. The goals scored away are relatively spread out. The EPL teams playing away from how are less likely to score goals. __Scenario:__ If Berea College soccer team plays at the Barnard College soccer stadium, they are less likely to score.
+<p> The histogram shows that the distribution of the goals scored away is roughly symmetrical and bimodal. The goals scored away are relatively spread out. The EPL teams playing away from how are less likely to score goals. **Scenario:** If Berea College soccer team plays at the Barnard College soccer stadium, they are less likely to score. </p> 
 
 ```{r Histogram2}
 hist(Away_Scored)
 ```
 
-The histogram shows the goals that the away team scored at the home team stadium in the EPL. The distribution shows that the away team is more likely not to score. __Scenario:__ If Barnard College soccer is playing at the Berea College stadium, they are less likely to score at the Berea College stadium.
-
+<p> The histogram shows the goals that the away team scored at the home team stadium in the EPL. The distribution shows that the away team is more likely not to score. **Scenario:** If Barnard College soccer is playing at the Berea College stadium, they are less likely to score at the Berea College stadium.
+</p> 
 ```{r Histogram3}
 hist(Home_Conceded)
 ```
 
-The histogram shows a distribution that is symmetrical. The distribution shows the likelihood of away teams to score at the home team stadium. __Scenario:__ If  Berea College was playing at the Barnard College stadium, they are relatively less likely to score at the Barnard College stadium. 
-
+<p> The histogram shows a distribution that is symmetrical. The distribution shows the likelihood of away teams to score at the home team stadium. **Scenario:** If Berea College was playing at the Barnard College stadium, they are relatively less likely to score at the Barnard College stadium. </p>
 ```{r Histogram4}
 hist(Away_Conceded)
 ```
+<p> Based on the graphs above we can see a corelation between the goals of a team and its chances of winning the title. Therefore, we have to calculate the mean value of all the scored goals at home, and away. In addition, we calculate the mean of all the conceded goals. </p>
+
+<p> The attack strength shows how strong the team is by making more offensive plays. So, the home attack strength is the ratio of the averaged scored goals of a team in an amount of games to the average scored goals of the complete league in an amount of games. Similarly, defense strength is how strong is the team defensively and we calculate that by dividing the goals conceded by the average of goals conceded of all teh teams in the league (Apaar, 2019). </p>
+
+<p> Then, we calculate the attack strength of each team by dividing the goals scored at home by the general average of the league. We calculate the defense strength of each team by dividing the goals conceded at home by the general average of the league (Apaar, 2019). Lastly, we introduced the variables Overall_Goals_Home which is calculating the general factor of how many goals are scored and conceded on average by each game at the home stadium. Similarly we created the Overall_Goals_Away which is calculating the general factor of how many goals are scored and conceded on average by each game for the away team. </p> 
 
 ```{r Mean Value}
 League_Home_Scored <- mean(Home_Scored)
 League_Away_Scored <- mean(Away_Scored)
-
 
 League_Home_Conceded <- mean(Home_Conceded)
 League_Away_Conceded <- mean(Away_Conceded)
@@ -176,6 +202,9 @@ Away_Defense_Strength <- c(Away_Conceded/League_Away_Conceded)
 Overall_Goals_Home <- (League_Home_Scored+League_Away_Conceded)/2
 Overall_Goals_Away <- (League_Away_Scored+League_Home_Conceded)/2
 ```
+
+<p> Here we calculate the general probability of a team going to score and we compare this to the opposite team. We used this method based on a project made by Gupta Apaar. We can now formulate the lambda parameter as follows: (Apaar, 2019)</p>
+
 ```{r calculate score probability}
 Calculate_lambda <- function(Home, Away){
   LambdaH <- Home_Attack_Strength[Home] * Away_Defense_Strength[Away] * Overall_Goals_Home
@@ -186,6 +215,14 @@ return(Lambdas)
 
 Calculate_lambda
 ```
+
+<p> This function shows the prediction between the two teams.  On this block we are finding the score based on the probability of who is going to win. We are getting the results for the two teams based on the previous function. If we could change this project and we had more time we would focus more on the additional statistical analysis.
+This function takes 3 parameters, Home is the team number which plays as a home game, Away is the team number of the team which plays away, and the score vector is there in order to keep track of the score.</p>
+
+<p>  In order to calculate the results we are assigning points for each game, each team gets awarded 3 points for a win, 1 point for a draw, and no points for a defeat. This idea is based on how points are being calculated in the English Premier League. </p> 
+
+<p> The home team with the highest probability to win gets 3 points for a win. If the probability is the same both teams are getting 1 point. Lastly, if the away team has the highest probability to win get 3 points. Here we were supposed to calculate the poisson distribution and find the scores of the specific games.</p>
+
 ```{r Game prediction function}
 Predict_Game <- function(Home, Away, score_vector){
   Lambdas <- Calculate_lambda(Home, Away)
@@ -203,35 +240,59 @@ Predict_Game <- function(Home, Away, score_vector){
     score_vector[Away] <- score_vector[Away] + 3 }
   return(score_vector)
 }
+```
+<p> Here is the r loop that analyzes the remaining games of the current season, and passes the parameters of the team number to the previous two functions. Here i represents the game number and it can go up to 20, since there are only 20 remaining games between the top 10 teams.<p> 
+```{r The for loop}
 
 for(i in (1:20)){
   EPL_20$Results <- Predict_Game(Games_left$Home[i], Games_left$Away[i], EPL_20$Results) }
 
 final_standing <- data.frame(EPL_20$team, EPL_20$Results)
-str(final_standing)
+```
 
+## Here you can see the prediction results we found as a conclusion:
+
+```{r The Results}
 final_standing[rev(order(final_standing$EPL_20.Results)),]
 ```
 
 ## Summarized Results
-<p> The summarized results we have found are that there is a linear coorelation between the goals scored by a team and whether or not a team gets more points. In addition to that, we also have found out that there is actually a home advantage for the teams playing on their home stadium. </p>
+<p> The summarized results we have found are that there is a linear correlation between the goals scored by a team and whether or not a team gets more points. In addition to that, we also have found out that there is actually a home advantage for the teams playing on their home stadium. This is a good thing to see and it makes sense because most teams would prefer to be cheered on by their own fans on their home ground and this will motivate them a little more as the away team gets the opposite feeling. We saw the relation of goals scored by a team and the points a team had. According to the data, the more points a team had would show the team being at the top of table sitting with the most goals scored. This is a good thing to notice becasue it shows the team with the most goals often dominated their opponents through the season thus leading them to the title. The histograms is showing how often a team would score home or away. A team would score more at home games more often than scoring in away games. This makes sense because we have decided that a team playing at home has more of an advantage. The other histogram shows how often a team would get scored on. It shows more teams would get scored on more and more often when being the away team and would get scored on less when playing at home. All these stats and data end up giving us information and help us build our predictions. According to the predictions made; Liverpool ends up winning the 2020 premier league title among these top 10 teams. </p>
 
 ## Critique
-
+<p> The methods we used in our project are logical because we used variables that are important for understanding how teams get points compared to their goals scored. They might not be very accurate as of the fact that we only used the top 10 teams and these are not the only factors that are influencing the results. However, for the short amount of time that we had this was a project that used our knowledge of vectors, functions, parameters, and distributions. If we could do this project differently and have more time to work on this. We could compare games played the last 10 years and calculate the possible score, we can also resolve score ties by the goal difference between the two teams.</p>
 
 ## Learning
+<p> Emi- This project went very well between our group. The group would show up when needed and did what they were supposed to. According to the data science process I obtained the the data from a bunch of sources to build our own dataset from. I then cleaned the data by getting rid of the uneccesary stuff and keeping the goof information. I would then figure out what we needed and would find the information and fill the data inside the spreadsheet for each of the datasets we used. I learned a lot of things needed for data cleaning from this. My team also helped me learn a lot about coding and we learned how to communicate with each other and use each others skills. </p>
+
+<p> Eleni - In this project, I learned a lot about data science. More specifically I found a topic that I am really interested in and then I learned how to explore the data set in order to get meaningful feedback. During this process I learned how to find significant patterns and trends that are happening in soccer games already played, allowing me to think about how can we predict the upcoming games.  In addition to that, I learned how to construct models to predict results for the future.</p>
+
+<p> Daisy - I learned from the process of the project, from coming up with a topic to producing results using the R programming language. I learned the relevance of teamwork and task redistribution in order to come up with a final project. I also learned that you need to be able to not only write your code but to also be able to communicate your code to help other people understand. </p>
 
 
 ## Conclusion and Discussion
+<p> In conclusion, we managed to predict the winner of the English Premier League based out of the top 10 teams and each teams remaining games. We defintely struggled to find a starting point at the beginning of this project but, once we took our times and decided what everyone was bringing to the table and set out each other ideas we managed to complete the project.</p>
 
+<p> The findings we got from this project are very significant because from just the scores and the average goals scored and conceded for each team we are able to reach a conclusion. We already knew which teams are most likely to be on the top 3 and so based on our prediction we were proven to be right</p>
 
 ## Resources Used
-<div id="refs">Yoely, Ido. (2020). English Premier League stats 2019-2020 [Data set]. Kaggle.   https://www.kaggle.com/idoyo92/epl-stats-20192020?select=players_1920.csv </div>
+<div id="refs"> Yoely, Ido. (2020). English Premier League stats 2019-2020 [Data set]. Kaggle.   https://www.kaggle.com/idoyo92/epl-stats-20192020?select=players_1920.csv</div>
 
-<div id="refs">Peacock, Chas. (2019, Aug 25). 2018-2019 Premier League matches [Data set]. data.world. https://data.world/chas/2018-2019-premier-league-matches</div>
+<div id="refs"> Premier League. (2020, May 26). Retrieved from https://en.wikipedia.org/wiki/Premier_League</div>
 
-<div id="refs">Premier League. (2020, May 26). Retrieved from https://en.wikipedia.org/wiki/Premier_League</div>
+<div id="refs"> Gupta, Apaar. (2019, Jan 30). Predicting Premier league standings - putting that math to some use. Medium. https://towardsdatascience.com/predicting-premier-league-standings-putting-that-math-to-some-use-e8de64938d7 </div>
 
-<div id="refs">Gupta, Apaar. (2019, Jan 30). Predicting Premier league standings — putting that math to some use. Medium. https://towardsdatascience.com/predicting-premier-league-standings-putting-that-math-to-some-use-e8de64938d7 </div>
+<div id="refs"> Premier League. (2020, June 01). Football News, Fixtures, Scores & Results. Premier League. https://www.premierleague.com/</div>
 
-<div id="refs">Premier League. (2020, June 01). Football News, Fixtures, Scores & Results. Premier League. https://www.premierleague.com/ </div>
+<div id="refs"> Premier League Club Stats - Goals conceded. (2020). Retrieved 2020, from https://www.premierleague.com/stats/top/clubs/goals_conceded </div>
+
+<div id="refs"> Zaeem, Nalla. (2018, July 12). Results of each match and stats of each team from season 2006/2007 to 2017/2018. Kaggle. https://www.kaggle.com/zaeemnalla/premier-league </div> 
+
+<div id="refs"> JohnDoe. (2019, June 1). 2018-2019 Premier League Data. Kaggle.  https://www.kaggle.com/thesiff/premierleague1819 </div>
+
+<div id="refs"> 2018-2019 Premier League matches - dataset by chas. (2019, September 22). Retrieved from https://data.world/chas/2018-2019-premier-league-matches/workspace/file?filename=2018-2019.csv </div>
+
+<div id="refs"> Premier League First Team Club Statistics, Team & Player Stats. (2020). Retrieved from https://www.premierleague.com/stats </div>
+
+<div id="refs"> FootyStats. (2020). Premier League. FootyStats. https://footystats.org/clubs/england/liverpool-fc#:~:text=On%20average%20Liverpool%20score%202.28,of%2021%20goals%20this%20season. </div>
+

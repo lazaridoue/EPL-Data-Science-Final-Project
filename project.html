@@ -11,7 +11,7 @@
 
 <meta name="author" content="Daisy Asiimwe, Eleni L., and Emi Torres-Vera" />
 
-<meta name="date" content="2020-06-03" />
+<meta name="date" content="2020-06-04" />
 
 <title>Final Team Project</title>
 
@@ -1512,7 +1512,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Final Team Project</h1>
 <h4 class="author">Daisy Asiimwe, Eleni L., and Emi Torres-Vera</h4>
-<h4 class="date">2020-06-03</h4>
+<h4 class="date">2020-06-04</h4>
 
 </div>
 
@@ -1556,7 +1556,7 @@ EPL_20$Results &lt;- c(EPL_20$PTS)
 
 Games_left &lt;- read_excel(&quot;Games Left Top 10.xlsx&quot;)</code></pre>
 <p>
-head(EPL_18) is containing the table from the 2018 season. This season Manchester City won with 100 points. No other team seems to be close to the champions of this season. This table shows the stats from the top 10 finishing teams from the 2018 season.
+EPL_18 dataset is containing the table from the 2018 season. This season Manchester City won with 100 points. No other team seems to be close to the champions of this season. This table shows the stats from the top 10 finishing teams from the 2018 season.
 </p>
 <pre class="r"><code>head(EPL_18)</code></pre>
 <pre><code>## # A tibble: 6 x 20
@@ -1571,7 +1571,7 @@ head(EPL_18) is containing the table from the 2018 season. This season Mancheste
 ## # … with 8 more variables: chances_missed &lt;dbl&gt;, Tackles &lt;dbl&gt;, Offsides &lt;dbl&gt;,
 ## #   Dispossessed &lt;dbl&gt;, CS &lt;dbl&gt;, Saves &lt;dbl&gt;, GC &lt;dbl&gt;, GD &lt;dbl&gt;</code></pre>
 <p>
-head(EPL_19) is showing once again that Manchester City finihsed with 98 points in the season which made them champions. Liverpool was only 1 point behind the champions meaning the title was between them two all season.
+EPL_19 dataset is showing once again that Manchester City finihsed with 98 points in the season which made them champions. Liverpool was only 1 point behind the champions meaning the title was between them two all season.
 </p>
 <pre class="r"><code>head(EPL_19)</code></pre>
 <pre><code>## # A tibble: 6 x 22
@@ -1587,7 +1587,7 @@ head(EPL_19) is showing once again that Manchester City finihsed with 98 points 
 ## #   Offsides &lt;dbl&gt;, chances_missed &lt;dbl&gt;, Tackles &lt;dbl&gt;, Clearances &lt;dbl&gt;,
 ## #   Dispossessed &lt;dbl&gt;, CS &lt;dbl&gt;, Saves &lt;dbl&gt;</code></pre>
 <p>
-head(EPL_20) is showing the current standings of the 2020 season. This season was supposed to be over a while ago but due to Covid-19 the season was delayed and will begin June 17th. This table shows the amount of games each team has played and their stats. Liverpool is on top with 82 points with a big gap between second place team Manchester City with 57 points. We are using this tables stats to compare them to the past seasons to predict the outcome for this table.
+EPL_20 dataset is showing the current standings of the 2020 season. This season was supposed to be over a while ago but due to Covid-19 the season was delayed and will begin June 17th. This table shows the amount of games each team has played and their stats. Liverpool is on top with 82 points with a big gap between second place team Manchester City with 57 points. We are using this tables stats to compare them to the past seasons to predict the outcome for this table.
 </p>
 <pre class="r"><code>head(EPL_20)</code></pre>
 <pre><code>## # A tibble: 6 x 20
@@ -1602,8 +1602,19 @@ head(EPL_20) is showing the current standings of the 2020 season. This season wa
 ## # … with 9 more variables: chances_missed &lt;dbl&gt;, Tackles &lt;dbl&gt;, Offsides &lt;dbl&gt;,
 ## #   Dispossessed &lt;dbl&gt;, CS &lt;dbl&gt;, Saves &lt;dbl&gt;, GC &lt;dbl&gt;, GD &lt;dbl&gt;,
 ## #   Results &lt;dbl&gt;</code></pre>
-<div id="here-is-a-glimpse-of-the-data-for-the-season-2017-2018" class="section level3">
-<h3>Here is a glimpse of the data for the season 2017-2018:</h3>
+<div id="explanation-of-abbriviations" class="section level4">
+<h4>Explanation of Abbriviations</h4>
+<ul>
+<li>PTS means points</li>
+<li>YC means Yellow cards (Discipline actions for a misconduct)</li>
+<li>RC means Red cards (Discipline actions for a misconduct)</li>
+<li>CS means clean sheets (How many games the team has won without conceding any goal)</li>
+<li>GC means goals conceded in total</li>
+<li>GD means the goal difference (It is the difference between the goals scored and the goals conceded)</li>
+</ul>
+</div>
+<div id="here-are-the-types-of-data-we-are-using-for-the-season-2017-2018" class="section level3">
+<h3>Here are the types of data we are using for the season 2017-2018:</h3>
 <pre class="r"><code>glimpse(EPL_18, width = 3)</code></pre>
 <pre><code>## Rows: 10
 ## Columns: 20
@@ -1628,8 +1639,8 @@ head(EPL_20) is showing the current standings of the 2020 season. This season wa
 ## $ GC             &lt;dbl&gt; …
 ## $ GD             &lt;dbl&gt; …</code></pre>
 </div>
-<div id="here-is-a-glimpse-of-the-data-for-the-season-2018-2019" class="section level3">
-<h3>Here is a glimpse of the data for the season 2018-2019:</h3>
+<div id="here-are-the-types-of-data-we-are-using-for-the-season-2018-2019" class="section level3">
+<h3>Here are the types of data we are using for the season 2018-2019:</h3>
 <pre class="r"><code>glimpse(EPL_19, width = 3)</code></pre>
 <pre><code>## Rows: 10
 ## Columns: 22
@@ -1656,8 +1667,8 @@ head(EPL_20) is showing the current standings of the 2020 season. This season wa
 ## $ CS             &lt;dbl&gt; …
 ## $ Saves          &lt;dbl&gt; …</code></pre>
 </div>
-<div id="here-is-a-glimpse-of-the-data-for-the-season-2019-2020" class="section level3">
-<h3>Here is a glimpse of the data for the season 2019-2020:</h3>
+<div id="here-are-the-types-of-data-we-are-using-for-the-season-2019-2020" class="section level3">
+<h3>Here are the types of data we are using for the season 2019-2020:</h3>
 <pre class="r"><code>glimpse(EPL_20, width = 3)</code></pre>
 <pre><code>## Rows: 10
 ## Columns: 20
@@ -1813,7 +1824,7 @@ Away_Defense_Strength &lt;- c(Away_Conceded/League_Away_Conceded)
 Overall_Goals_Home &lt;- (League_Home_Scored+League_Away_Conceded)/2
 Overall_Goals_Away &lt;- (League_Away_Scored+League_Home_Conceded)/2</code></pre>
 <p>
-Here we calculate the general probability of a team going to score and we compare this to the opposite team. We used this method based on a project made by Gupta Apaar. We can now formulate the lambda parameter as follows: (Apaar, 2019)
+Here we calculate the general probability of a team going to score and we compare this to the opposite team. We used this method based on a project made by Gupta Apaar. The parameter Home and Away are the team number based on the current order. We can now formulate the lambda parameter as follows: (Apaar, 2019)
 </p>
 <pre class="r"><code>Calculate_lambda &lt;- function(Home, Away){
   LambdaH &lt;- Home_Attack_Strength[Home] * Away_Defense_Strength[Away] * Overall_Goals_Home

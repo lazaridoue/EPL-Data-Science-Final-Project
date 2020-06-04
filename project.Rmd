@@ -3,13 +3,15 @@ title: "Final Team Project"
 author: "Daisy Asiimwe, Eleni L., and Emi Torres-Vera"
 date: "`r Sys.Date()`"
 output:
+  pdf_document:
+    toc: yes
   html_document:
     fig_height: 5
     fig_width: 5
+    pdf_document: null
     text-indent: 50px
-    toc_float: yes
-    pdf_document:
     toc: yes
+    toc_float: yes
 ---
 ![](Premier_League_Logo.svg.png)
 
@@ -37,40 +39,47 @@ EPL_20$Results <- c(EPL_20$PTS)
 Games_left <- read_excel("Games Left Top 10.xlsx")
 ```
 
-<p> head(EPL_18) is containing the table from the 2018 season. This season Manchester City won with 100 points. No other team seems to be close to the champions of this season. This table shows the stats from the top 10 finishing teams from the 2018 season. </p>
+<p> EPL_18 dataset is containing the table from the 2018 season. This season Manchester City won with 100 points. No other team seems to be close to the champions of this season. This table shows the stats from the top 10 finishing teams from the 2018 season. </p>
 
 ```{r head}
 head(EPL_18)
 ```
 
-<p> head(EPL_19) is showing once again that Manchester City finihsed with 98 points in the season which made them champions. Liverpool was only 1 point behind the champions meaning the title was between them two all season. </p>
+<p> EPL_19 dataset is showing once again that Manchester City finihsed with 98 points in the season which made them champions. Liverpool was only 1 point behind the champions meaning the title was between them two all season. </p>
 
 ```{r head2}
 head(EPL_19)
 ```
 
-<p> head(EPL_20) is showing the current standings of the 2020 season. This season was supposed to be over a while ago but due to Covid-19 the season was delayed and will begin June 17th. This table shows the amount of games each team has played and their stats. Liverpool is on top with 82 points with a big gap between second place team Manchester City with 57 points. We are using this tables stats to compare them to the past seasons to predict the outcome for this table. </p>
+<p> EPL_20 dataset is showing the current standings of the 2020 season. This season was supposed to be over a while ago but due to Covid-19 the season was delayed and will begin June 17th. This table shows the amount of games each team has played and their stats. Liverpool is on top with 82 points with a big gap between second place team Manchester City with 57 points. We are using this tables stats to compare them to the past seasons to predict the outcome for this table. </p>
 
 ```{r head3}
 head(EPL_20)
 ``` 
+#### Explanation of Abbriviations
 
+* PTS means points
+* YC means Yellow cards (Discipline  actions for a misconduct)
+* RC means Red cards (Discipline  actions for a misconduct)
+* CS means clean sheets (How many games the team has won without conceding any goal)
+* GC means goals conceded in total
+* GD means the goal difference (It is the difference between the goals scored and the goals conceded)
 
-### Here is a glimpse of the data for the season 2017-2018:
+### Here are the types of data we are using for the season 2017-2018:
 
 ```{r glimpse1} 
 glimpse(EPL_18, width = 3)
 ```
 
 
-### Here is a glimpse of the data for the season 2018-2019:
+### Here are the types of data we are using for the season 2018-2019:
 
 ```{r glimpse2} 
 glimpse(EPL_19, width = 3)
 ```
 
 
-### Here is a glimpse of the data for the season 2019-2020:
+### Here are the types of data we are using for the season 2019-2020:
 
 ```{r limpse3} 
 glimpse(EPL_20, width = 3)
@@ -203,7 +212,7 @@ Overall_Goals_Home <- (League_Home_Scored+League_Away_Conceded)/2
 Overall_Goals_Away <- (League_Away_Scored+League_Home_Conceded)/2
 ```
 
-<p> Here we calculate the general probability of a team going to score and we compare this to the opposite team. We used this method based on a project made by Gupta Apaar. We can now formulate the lambda parameter as follows: (Apaar, 2019)</p>
+<p> Here we calculate the general probability of a team going to score and we compare this to the opposite team. We used this method based on a project made by Gupta Apaar. The parameter Home and Away are the team number based on the current order. We can now formulate the lambda parameter as follows: (Apaar, 2019)</p>
 
 ```{r calculate score probability}
 Calculate_lambda <- function(Home, Away){
